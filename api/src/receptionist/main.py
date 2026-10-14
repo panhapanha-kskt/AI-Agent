@@ -98,7 +98,9 @@ def create_app(settings: Settings | None = None, agent_client=None) -> FastAPI:
         return {"status": "ok", "skills": len(skills.names())}
 
     web = settings.web_dir
+    admin_dir = settings.admin_dir
     app.mount("/static", StaticFiles(directory=web), name="static")
+    app.mount("/admin-static", StaticFiles(directory=admin_dir), name="admin-static")
 
     @app.get("/", include_in_schema=False)
     def index():
@@ -106,7 +108,7 @@ def create_app(settings: Settings | None = None, agent_client=None) -> FastAPI:
 
     @app.get("/admin", include_in_schema=False)
     def admin_page():
-        return FileResponse(web / "admin.html")
+        return FileResponse(admin_dir / "admin.html")
 
     return app
 

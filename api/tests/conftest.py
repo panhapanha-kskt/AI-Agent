@@ -5,11 +5,12 @@ from types import SimpleNamespace
 
 # Configure a throwaway environment BEFORE the app modules are imported.
 _tmp = tempfile.mkdtemp()
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 os.environ.update(
     DATABASE_URL=f"sqlite:///{Path(_tmp) / 'test.db'}",
     SKILLS_DIR=str(ROOT / "skills"),
     WEB_DIR=str(ROOT / "web"),
+    ADMIN_DIR=str(ROOT / "admin"),
     ADMIN_API_KEY="test-admin-key",
     GEMINI_API_KEY="",
     RATE_LIMIT="1000/minute",

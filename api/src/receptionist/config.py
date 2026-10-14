@@ -50,6 +50,7 @@ class Settings(BaseSettings):
     database_url: str = "sqlite:///./receptionist.db"
     skills_dir: Path = Path("./skills")
     web_dir: Path = Path("./web")
+    admin_dir: Path = Path("./admin")
     cors_origins: str = "http://localhost:8000"
 
     # Admin

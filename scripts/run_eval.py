@@ -23,7 +23,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 # Throwaway database: must be set BEFORE importing the app.
 os.environ["DATABASE_URL"] = f"sqlite:///{Path(tempfile.mkdtemp()) / 'eval.db'}"
-sys.path.insert(0, str(ROOT / "src"))
+sys.path.insert(0, str(ROOT / "api" / "src"))
 
 import yaml  # noqa: E402
 

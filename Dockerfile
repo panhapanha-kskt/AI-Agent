@@ -6,11 +6,12 @@ WORKDIR /app
 
 # Install dependencies first for better layer caching.
 COPY pyproject.toml ./
-COPY src ./src
+COPY api/src ./api/src
 RUN pip install ".[voice]"
 
 COPY skills ./skills
 COPY web ./web
+COPY admin ./admin
 
 # Run as an unprivileged user.
 RUN useradd --create-home --uid 10001 app && mkdir -p /app/data /app/models \
